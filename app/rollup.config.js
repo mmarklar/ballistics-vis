@@ -1,3 +1,4 @@
+import replace from '@rollup/plugin-replace';
 import svelte from 'rollup-plugin-svelte';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
@@ -37,6 +38,9 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
